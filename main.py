@@ -1,17 +1,17 @@
 class Solution:
     def maxArea(self, height: list[int]) -> int:
-        p_begin = 0                 # Pointer Begin
-        p_end = len(height)-1       # Pointer End
-        max_area = 0
-        while p_begin < p_end:
-            min_height = min(height[p_begin],height[p_end])
-            current_area = min_height * (p_end - p_begin)
-            max_area = max(current_area, max_area)
-            if height[p_begin] < height[p_end]:
+        p_begin = 0                                             # Pointer Begin
+        p_end = len(height)-1                                   # Pointer End
+        max_area = 0                                            # INit max area as 0
+        while p_begin < p_end:                                  # while the two pointers not reach one each other...
+            min_height = min(height[p_begin],height[p_end])     # find the minimum height
+            current_area = min_height * (p_end - p_begin)       # calculate the actual area
+            max_area = max(current_area, max_area)              # update the maximum area
+            if height[p_begin] < height[p_end]:                 # find the lowest height and change the pointer
                 p_begin += 1
             else:
                 p_end -= 1
-                
+
         return max_area 
     
 if __name__ == '__main__':
